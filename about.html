@@ -103,21 +103,41 @@
 </head>
 <body>
   <div class="wrap">
-    <header>
-      <div class="brand">
-        <div class="logo"><img src="images/logo1.PNG" alt="logo"></div>
-        <div class="title">
-          <h1>Ceezee Creates</h1>
-        </div>
-      </div>
+   <!-- Header (replace the existing brand block with this) -->
+<header>
+  <div class="brand">
+    <a class="brand-link" href="index.html" aria-label="Ceezee Creates home">
+      <span class="logo-wrap" aria-hidden="true">
+        <img
+          src="images/logo1.png"
+          srcset="images/logo1.png 1x, images/logo1@2x.png 2x"
+          sizes="(max-width:480px) 40px, (max-width:768px) 48px, 64px"
+          alt="Ceezee Creates logo"
+          class="logo-img"
+          loading="eager"
+          decoding="async"
+        />
+      </span>
 
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="about.html" aria-current="page">About</a>
-        <a href="#" onclick="alert('Projects soon!')">Projects</a>
-        <a class="btn" href="index.html">Back to Home</a>
-      </nav>
-    </header>
+      <span class="title">
+        <h1>Ceezee Creates</h1>
+        <p class="tagline">Creative content · Tech · Motion</p>
+      </span>
+    </a>
+  </div>
+
+  <!-- Mobile menu toggle (if you add the nav toggle JS below) -->
+  <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+
+  <!-- Your nav (keep/edit links as needed) -->
+  <nav class="nav-links" role="navigation">
+    <a href="index.html" aria-current="page">Home</a>
+    <a href="about.html">About</a>
+    <a href="#">Projects</a>
+    <button class="cta" id="contactBtn" onclick="alert('Email: ceezeecreates@gmail.com')">Contact</button>
+  </nav>
+</header>
+
 
     <main class="main" role="main">
       <!-- left column: content -->
@@ -186,3 +206,4 @@
 </body>
 
 </html>
+
