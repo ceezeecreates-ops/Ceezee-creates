@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ceezee Creates — Home</title>
+  <style>
+    /* -------------------------
+       Base + Layout
+    --------------------------*/
+    :root{
+      --bg:#0b0d0f;
+      --panel:#0f1113;
+      --muted:#9aa3a8;
+      --accent:#ff3c81;
+      --accent-2:#ff8ab0;
+      --glass: rgba(255,255,255,0.03);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto, "Helvetica Neue", Arial;background:linear-gradient(180deg,#071018 0%,#0b0d0f 60%);color:#fff}
+    a{color:var(--accent);text-decoration:none}
+    .wrap{max-width:1100px;margin:36px auto;padding:28px}
+
+    /* -------------------------
+       Header / Nav
+    --------------------------*/
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{display:flex;align-items:center;gap:14px}
+    .logo{
+      width:58px;height:58px;border-radius:14px;background:linear-gradient(135deg,#ff6a9a,#ff3c81);display:grid;place-items:center;box-shadow:0 6px 24px rgba(255,60,129,0.16);
+      transform:rotate(-8deg);
+    }
+    .logo{
+  width:58px;
+  height:58px;
+  border-radius:14px;
+  background:linear-gradient(135deg,#e1bdc8,#dfc4cd);
+  display:grid;
+  place-items:center;
+  box-shadow:0 6px 24px rgba(255,60,129,0.16);
+  transform:rotate(-8deg);
+  overflow:hidden;
+}
+.logo-img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+
+    nav{display:flex;gap:12px;align-items:center}
+    nav a{padding:8px 12px;border-radius:8px;color:var(--muted);font-weight:600}
+    nav a:hover{color:#fff;background:rgba(255,255,255,0.03)}
+    .cta{background:linear-gradient(90deg,var(--accent),var(--accent-2));padding:9px 14px;border-radius:10px;color:#fff;font-weight:700;border:none;cursor:pointer;box-shadow:0 8px 24px rgba(255,60,129,0.14)}
+    .cta:active{transform:translateY(1px)}
+
+    /* -------------------------
+       Hero / Visual
+    --------------------------*/
+    .hero{display:grid;grid-template-columns:1fr 380px;gap:28px;margin-top:34px;align-items:center}
+    .panel{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:14px;padding:26px;box-shadow:0 10px 40px rgba(0,0,0,0.6);backdrop-filter: blur(6px);
+    }
+    .headline{font-size:36px;margin:0 0 8px 0;letter-spacing:-0.02em}
+    .sub{color:var(--muted);margin:0 0 18px 0}
+    .actions{display:flex;gap:12px;align-items:center}
+    .pink-btn{background:transparent;border:2px solid var(--accent);padding:12px 18px;border-radius:12px;color:var(--accent);font-weight:700;cursor:pointer}
+    .pink-btn:hover{background:rgba(255,60,129,0.06);box-shadow:0 8px 26px rgba(255,60,129,0.06)}
+    .big-cta{background:linear-gradient(90deg,var(--accent),#ff6a9a);padding:12px 20px;border-radius:14px;color:white;border:none;font-weight:800;cursor:pointer;box-shadow:0 14px 40px rgba(255,60,129,0.16)}
+
+    /* -------------------------
+       Floating cartoon / SVG avatar
+    --------------------------*/
+    .avatar-wrap{display:flex;align-items:center;justify-content:center;height:100%}
+    .avatar{
+      width:320px;height:320px;border-radius:18px;background:linear-gradient(180deg,#0f1315,#0b0f11);display:grid;place-items:center;position:relative;overflow:hidden;
+      box-shadow:0 20px 60px rgba(0,0,0,0.6);
+    }
+    .blob{
+      position:absolute;width:480px;height:480px;left:-80px;top:-60px;filter:blur(36px);opacity:0.18;background:radial-gradient(circle at 30% 30%, #ff3c81, transparent 35%), radial-gradient(circle at 70% 70%, #6a8bff22, transparent 35%);
+      transform:rotate(10deg);animation:float 6s ease-in-out infinite;
+    }
+    @keyframes float{0%{transform:translateY(0) rotate(0)}50%{transform:translateY(-14px) rotate(3deg)}100%{transform:translateY(0) rotate(0)}}
+
+    /* small SVG cartoon style */
+    .cartoon-wrap{width:260px;height:260px;border-radius:12px;background:linear-gradient(180deg,#101316,#0b0f11);display:grid;place-items:center;position:relative;padding:10px}
+    .cartoon-caption{position:absolute;left:12px;bottom:12px;color:var(--muted);font-size:12px}
+
+    /* -------------------------
+       Features / Cards
+    --------------------------*/
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px}
+    .card{background:var(--panel);padding:18px;border-radius:12px;min-height:120px;transition:transform .22s, box-shadow .22s;border:1px solid rgba(255,255,255,0.02)}
+    .card:hover{transform:translateY(-6px);box-shadow:0 18px 50px rgba(0,0,0,0.6)}
+    .card h3{margin:0 0 8px 0}
+    .card p{margin:0;color:var(--muted);font-size:13px}
+
+    /* -------------------------
+       Mini carousel (images are inline svgs)
+    --------------------------*/
+    .carousel{display:flex;gap:10px;align-items:center}
+    .thumb{width:120px;height:80px;border-radius:10px;overflow:hidden;border:2px solid rgba(255,255,255,0.02);cursor:pointer}
+    .thumb svg{width:100%;height:100%;display:block}
+    .thumb:focus{outline:3px solid rgba(255,60,129,0.12)}
+
+    /* -------------------------
+       Footer / Responsive
+    --------------------------*/
+    footer{margin-top:30px;color:var(--muted);font-size:13px;text-align:center;padding:20px}
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr;align-items:stretch}
+      .grid{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width:580px){
+      .grid{grid-template-columns:1fr}
+      .avatar{width:100%;height:240px}
+      .headline{font-size:26px}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+  <div class="logo">
+    <img src="images/logo1.png" alt="Ceezee Creates Logo" class="logo-img" />
+  </div>
+
+  <div class="title">
+    <h1>Ceezee Creates</h1>
+    <p>Creative content · Tech · Motion</p>
+  </div>
+</div>
+
+      <nav>
+        <a href="index.html" aria-current="page">Home</a>
+        <a href="about.html">About</a>
+        <a href="#" onclick="alert('Soon: Projects!')">Projects</a>
+        <button class="cta" id="contactBtn" onclick="alert('Email: hello@ceezee.test')">Contact</button>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" aria-label="Introduction">
+      <div class="panel">
+        <h2 class="headline">Make something people remember.</h2>
+        <p class="sub">I’m Ceezee — I mix creative storytelling with simple web design and videos. Explore my world below.</p>
+
+        <div class="actions" role="group" aria-label="Primary actions">
+          <!-- Primary link button to about page -->
+          <!-- Two ways: anchor (works without JS) + JS click handler on the big button -->
+          <a href="about.html" style="text-decoration:none;">
+            <button class="big-cta" id="aboutBtn">About Ceezee</button>
+          </a>
+
+          <button class="pink-btn" id="demoBtn" title="Try a playful demo">Play demo</button>
+        </div>
+
+        <!-- small features -->
+        <div class="grid" style="margin-top:18px">
+          <div class="card">
+            <h3>Short videos</h3>
+            <p>Fast-paced clips that show what I build, edit skills & behind-the-scenes.</p>
+          </div>
+          <div class="card">
+            <h3>Creative Tools</h3>
+            <p>From motion templates to thumbnails — simple tools that speed creative work.</p>
+          </div>
+          <div class="card">
+            <h3>Learning Path</h3>
+            <p>How I learn code and content creation — follow along as I build in public.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- right column: avatar / cartoon + small carousel -->
+      <aside class="avatar-wrap">
+        <div class="avatar" role="img" aria-label="Ceezee avatar">
+          <div class="blob" aria-hidden="true"></div>
+
+          <div class="cartoon-wrap" style="z-index:2">
+            <!-- Inline SVG cartoon (cute camera + smiling face) -->
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <defs>
+                <linearGradient id="g1" x1="0" x2="1" y1="0" y2="1">
+                  <stop offset="0" stop-color="#ff8ab0"/>
+                  <stop offset="1" stop-color="#ff3c81"/>
+                </linearGradient>
+              </defs>
+
+              <!-- camera body -->
+              <rect x="18" y="48" rx="20" ry="20" width="164" height="108" fill="#0f1417" stroke="#ffffff10"/>
+              <circle cx="100" cy="102" r="36" fill="url(#g1)" opacity="0.95"/>
+              <!-- lens glow -->
+              <circle cx="88" cy="92" r="10" fill="#ffffff" opacity="0.15"/>
+              <circle cx="114" cy="116" r="6" fill="#ffffff" opacity="0.12"/>
+              <!-- little face in the lens -->
+              <g transform="translate(80,92)">
+                <circle cx="16" cy="10" r="6" fill="#fff" opacity="0.92"/>
+                <path d="M5 18c6 6 22 6 28 0" stroke="#fff" stroke-linecap="round" stroke-width="2" opacity="0.9" fill="none"/>
+              </g>
+            </svg>
+
+            <div class="cartoon-caption">Mini-studio: where ideas become clips</div>
+          </div>
+
+          <!-- carousel below avatar -->
+          <div style="position:absolute;left:12px;bottom:12px;right:12px;display:flex;align-items:center;justify-content:center;gap:10px;z-index:3">
+            <div class="carousel" role="list">
+              <div class="thumb" tabindex="0" onclick="selectThumb(0)" aria-label="Thumb 1">
+                <!-- stylized card 1 -->
+                <svg viewBox="0 0 120 80"><rect width="120" height="80" rx="8" fill="#0e1112"/><text x="10" y="44" fill="#ff8ab0" font-weight="700" font-size="14">Short</text></svg>
+              </div>
+              <div class="thumb" tabindex="0" onclick="selectThumb(1)" aria-label="Thumb 2">
+                <svg viewBox="0 0 120 80"><rect width="120" height="80" rx="8" fill="#0e1112"/><text x="10" y="44" fill="#6aa1ff" font-weight="700" font-size="14">Edit</text></svg>
+              </div>
+              <div class="thumb" tabindex="0" onclick="selectThumb(2)" aria-label="Thumb 3">
+                <svg viewBox="0 0 120 80"><rect width="120" height="80" rx="8" fill="#0e1112"/><text x="10" y="44" fill="#ffc86a" font-weight="700" font-size="14">Design</text></svg>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </aside>
+    </section>
+
+    <!-- small fun footer area -->
+    <section style="margin-top:26px;display:flex;gap:18px;align-items:center;justify-content:space-between;flex-wrap:wrap">
+      <div style="display:flex;gap:12px;align-items:center">
+        <div style="width:44px;height:44px;border-radius:8px;background:linear-gradient(90deg,var(--accent),#ff6a9a);display:grid;place-items:center">✨</div>
+        <div>
+          <strong>Start building today</strong>
+          <div style="color:var(--muted);font-size:13px">Small steps -> big ideas</div>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:10px;align-items:center">
+        <button class="pink-btn" onclick="openDemoPopup()">Preview Clip</button>
+        <a href="about.html" class="pink-btn" style="display:inline-flex;align-items:center;justify-content:center;padding:10px 14px">About Ceezee</a>
+      </div>
+    </section>
+
+    <footer>
+      © <strong>Ceezee Creates</strong> · Built with ❤️ & JavaScript — Try the demo and open About.
+    </footer>
+  </div>
+
+  <script>
+    /* -------------------------
+       Small interactive behaviors
+    --------------------------*/
+    // 1) Carousel "select" feedback (simple)
+    function selectThumb(i){
+      const thumbs = Array.from(document.querySelectorAll('.thumb'));
+      thumbs.forEach((t,idx)=> t.style.borderColor = idx===i ? 'rgba(255,60,129,0.9)' : 'rgba(255,255,255,0.02)');
+      // playful feedback
+      const root = document.documentElement;
+      if(i===0){ flashAccent() }
+      if(i===1){ flashAccent('blue') }
+      if(i===2){ flashAccent('gold') }
+    }
+    function flashAccent(color){
+      const prev = document.querySelector('.big-cta');
+      const original = prev.style.boxShadow;
+      prev.style.transform = 'scale(0.99)';
+      setTimeout(()=> prev.style.transform = '', 120);
+    }
+
+    // 2) Play demo - small modal style using alert replacement
+    function openDemoPopup(){
+      const message = `Demo: This is a tiny interactive preview.\n\n- Click "About Ceezee" to visit the about page.\n- Try Projects (coming soon).`;
+      alert(message);
+    }
+
+    // 3) Make the big button also animate lightly on page load
+    document.addEventListener('DOMContentLoaded', ()=>{
+      const aboutBtn = document.getElementById('aboutBtn');
+      aboutBtn.animate([{transform:'translateY(8px)'},{transform:'translateY(0)'}],{duration:700,fill:'forwards',easing:'cubic-bezier(.2,.9,.3,1)'});
+      // keyboard accessibility for thumbs
+      document.querySelectorAll('.thumb').forEach((t, idx)=>{
+        t.addEventListener('keydown', (e)=>{ if(e.key==='Enter' || e.key===' ') selectThumb(idx) });
+      });
+    });
+
+    // 4) extra: if JS is disabled the <a href="about.html"> still works — progressive enhancement
+    // 5) small keyboard shortcut: press "a" to go to About
+    document.addEventListener('keydown', (e)=>{
+      if(e.key.toLowerCase()==='a'){ window.location.href='about.html' }
+      if(e.key.toLowerCase()==='p'){ openDemoPopup() }
+    });
+  </script>
+</body>
+</html>
