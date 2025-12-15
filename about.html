@@ -4,9 +4,10 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>About — Ceezee Creates</title>
+
   <style>
     :root{
-      --bg:#4b98a9;            /* main bluish background color (adjust if you want) */
+      --bg:#4b98a9;
       --panel: rgba(255,255,255,0.04);
       --glass-border: rgba(255,255,255,0.06);
       --muted:rgba(255,255,255,0.68);
@@ -14,313 +15,301 @@
       --accent-soft: rgba(255,60,129,0.12);
       --max-width:1100px;
     }
+
     *{box-sizing:border-box}
-    html,body{height:100%;margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;background:var(--bg);color:#fff}
-    a{color:var(--accent);text-decoration:none}
-    .wrap{max-width:var(--max-width);margin:36px auto;padding:28px}
-
-    /* header / nav — simple and consistent */
-    header{display:flex;align-items:center;justify-content:space-between;gap:16px}
-    .brand{display:flex;align-items:center;gap:14px}
-    .logo{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg, rgba(255,106,154,0.15), rgba(255,60,129,0.15));display:grid;place-items:center;overflow:hidden}
-    .logo img{width:100%;height:100%;object-fit:cover;display:block}
-    .title h1{font-size:16px;margin:0}
-    nav{display:flex;gap:12px;align-items:center}
-    nav a{color:rgba(255,255,255,0.88);font-weight:600}
-    nav a[aria-current="page"]{opacity:0.9}
-
-    /* Page layout: left info column and centered circular masked portrait */
-    .main{display:grid;grid-template-columns: 1fr 420px;gap:28px;align-items:start;margin-top:26px}
-    @media (max-width:980px){
-      .main{grid-template-columns:1fr;gap:18px}
-    }
-
-    /* glass card with subtle blur */
-    .panel{
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border-radius:14px;padding:22px;box-shadow:0 10px 40px rgba(0,0,0,0.4);backdrop-filter: blur(6px);
-      border:1px solid var(--glass-border);
-    }
-
-    /* text styles */
-    h2{font-size:30px;margin:0 0 8px}
-    p.lead{color:var(--muted);margin:0 0 18px}
-    .meta{color:var(--muted);font-size:14px;margin-top:10px}
-
-    /* circular portrait mask container */
-    .mask-wrap{position:relative;display:flex;align-items:center;justify-content:center}
-    .mask{
-      width: clamp(160px, 34vw, 420px);
-      height: clamp(160px, 34vw, 420px);
-      border-radius:50%;
-      overflow:hidden;
-      position:relative;
-      display:block;
-      margin:14px auto;
-      background:linear-gradient(180deg, rgba(0,0,0,0.06), rgba(0,0,0,0.12));
-      box-shadow: 0 18px 60px rgba(0,0,0,0.6), 0 6px 30px var(--accent-soft);
-      border: 1px solid rgba(255,255,255,0.04);
-    }
-
-    /* the image inside the mask is centered and covers the circle without stretching */
-    .mask img{
-      width:100%;
+    html,body{
       height:100%;
-      object-fit:cover;       /* keep aspect ratio and fill mask */
-      object-position:center center; /* <--- change this if head is off-center (see notes) */
-      display:block;
-      transform: translateZ(0);
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
+      background:var(--bg);
+      color:#fff;
     }
 
-    /* highlight ring — subtle */
-    .ring{
-      position:absolute;inset:-10px;border-radius:50%;
-      pointer-events:none;
-      background: radial-gradient(circle at 30% 30%, rgba(255,60,129,0.06), transparent 20%);
-      mix-blend-mode:screen;
+    a{text-decoration:none}
+
+    .wrap{
+      max-width:var(--max-width);
+      margin:36px auto;
+      padding:28px;
     }
 
-    /* content cards */
-    .about-grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:18px}
-    .glass-card{padding:14px;border-radius:12px;background:var(--panel);border:1px solid var(--glass-border);color:var(--muted)}
-    .glass-card h3{margin:0 0 6px}
-    .meta-list{display:flex;gap:12px;flex-wrap:wrap;margin-top:10px}
+    /* ---------- HEADER ---------- */
+    header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:16px;
+    }
 
-    /* small CTA */
+    .brand-link{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      color:inherit;
+    }
+
+    .logo-wrap{
+      width:56px;
+      height:56px;
+      border-radius:12px;
+      background:linear-gradient(135deg, rgba(255,106,154,0.12), rgba(255,60,129,0.10));
+      display:grid;
+      place-items:center;
+      border:1px solid rgba(255,255,255,0.05);
+      box-shadow:0 14px 36px rgba(0,0,0,0.45);
+    }
+
+    .logo-img{
+      width:44px;
+      height:44px;
+      object-fit:contain;
+    }
+
+    .title h1{
+      margin:0;
+      font-size:20px;
+      letter-spacing:-0.02em;
+    }
+
+    .title .tagline{
+      margin:0;
+      font-size:12px;
+      color:var(--muted);
+    }
+
+    nav{
+      display:flex;
+      gap:16px;
+      align-items:center;
+    }
+
+    nav a{
+      color:rgba(255,255,255,0.88);
+      font-weight:600;
+    }
+
+    /* ---------- LAYOUT ---------- */
+    .main{
+      display:grid;
+      grid-template-columns:1fr 420px;
+      gap:28px;
+      margin-top:32px;
+    }
+
+    @media(max-width:980px){
+      .main{grid-template-columns:1fr}
+    }
+
+    /* ---------- PANELS ---------- */
+    .panel{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:14px;
+      padding:22px;
+      border:1px solid var(--glass-border);
+      box-shadow:0 10px 40px rgba(0,0,0,0.4);
+      backdrop-filter:blur(6px);
+    }
+
+    h2{
+      font-size:30px;
+      margin:0 0 10px;
+    }
+
+    p.lead{
+      color:var(--muted);
+      margin:0 0 18px;
+    }
+
+    .about-grid{
+      display:grid;
+      gap:14px;
+      margin-top:18px;
+    }
+
+    .glass-card{
+      padding:14px;
+      border-radius:12px;
+      background:var(--panel);
+      border:1px solid var(--glass-border);
+      color:var(--muted);
+    }
+
+    .glass-card h3{
+      margin:0 0 6px;
+      color:#fff;
+    }
+
+    /* ---------- PROJECT CARD ---------- */
+    .project-link{
+      display:inline-block;
+      margin-top:12px;
+      padding:10px 14px;
+      border-radius:10px;
+      font-weight:600;
+      font-size:0.9rem;
+      letter-spacing:0.02em;
+      color:#fff;
+      border:1px solid rgba(255,255,255,0.14);
+      transition:all 280ms cubic-bezier(.2,.9,.3,1);
+    }
+
+    .project-link:hover{
+      transform:translateY(-2px);
+      background:linear-gradient(
+        135deg,
+        rgba(255,60,129,0.18),
+        rgba(255,60,129,0.08)
+      );
+      border-color:rgba(255,60,129,0.4);
+    }
+
+    /* ---------- BUTTONS ---------- */
     .btn{
-      display:inline-block;padding:10px 16px;border-radius:10px;background:linear-gradient(90deg,var(--accent),#ff6a9a);color:#fff;font-weight:700;border:none;cursor:pointer;text-decoration:none;
+      display:inline-block;
+      padding:10px 16px;
+      border-radius:10px;
+      font-weight:700;
+      background:linear-gradient(90deg,var(--accent),#ff6a9a);
+      color:#fff;
       box-shadow:0 12px 36px rgba(255,60,129,0.12);
     }
 
-    footer{margin-top:26px;color:rgba(255,255,255,0.6);text-align:center;font-size:13px;padding-bottom:30px}
-
-    /* responsiveness */
-    @media (max-width:580px){
-      h2{font-size:22px}
-      .mask{width:220px;height:220px}
+    .btn.alt{
+      background:transparent;
+      border:1px solid rgba(255,255,255,0.06);
+      box-shadow:none;
+      margin-left:8px;
     }
-    /* -------- LOGO / BRAND (responsive, crisp, retina friendly) -------- */
 
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
+    /* ---------- PORTRAIT ---------- */
+    .mask-wrap{
+      display:flex;
+      justify-content:center;
+    }
 
-/* clickable area */
-.brand-link {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  text-decoration: none;
-  color: inherit;
-}
+    .mask{
+      width:clamp(180px,34vw,420px);
+      height:clamp(180px,34vw,420px);
+      border-radius:50%;
+      overflow:hidden;
+      box-shadow:0 18px 60px rgba(0,0,0,0.6);
+      border:1px solid rgba(255,255,255,0.04);
+    }
 
-/* logo container (keeps layout stable while image loads) */
-.logo-wrap {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 64px;                /* desktop default */
-  height: 64px;
-  border-radius: 12px;
-  background: linear-gradient(135deg, rgba(255,106,154,0.12), rgba(255,60,129,0.10));
-  box-shadow: 0 14px 36px rgba(0,0,0,0.45), 0 6px 24px rgba(255,60,129,0.06);
-  border: 1px solid rgba(255,255,255,0.04);
-  overflow: hidden;
-  flex-shrink: 0;
-}
+    .mask img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
 
-/* logo image itself */
-.logo-img {
-  width: 56px;
-  height: 56px;
-  object-fit: contain;
-  object-position: center;
-  display: block;
-  -webkit-user-drag: none;
-  user-select: none;
-}
-
-/* title/brand text */
-.title { display:flex; flex-direction:column; line-height:1; }
-.title h1 { margin:0; font-size:20px; letter-spacing:-0.02em; }
-.title .tagline { margin-top:4px; color:var(--muted); font-size:12px; }
-
-/* navigation in header (desktop) */
-nav.nav-links { display:flex; gap:16px; align-items:center; }
-nav.nav-links a { color: rgba(255,255,255,0.88); font-weight:600; text-decoration:none; }
-nav .cta { margin-left:6px; }
-
-/* small hover lift for brand on desktop */
-@media (hover: hover) and (pointer: fine) {
-  .brand-link:hover .logo-wrap { transform: translateY(-4px); transition: transform 220ms cubic-bezier(.2,.9,.3,1); }
-}
-
-/* ----------------- Responsive behavior ----------------- */
-
-/* Tablet-ish */
-@media (max-width:1024px) {
-  .logo-wrap { width:58px; height:58px; border-radius:10px; }
-  .logo-img  { width:50px; height:50px; }
-  .title h1  { font-size:18px; }
-  .title .tagline { font-size:11.5px; }
-}
-
-/* Mobile: stack header, show hamburger */
-@media (max-width:768px) {
-  header { display:flex; flex-direction:column; align-items:stretch; gap:8px; padding:12px 0; }
-
-  /* brand full width on mobile */
-  .brand { width:100%; padding:0 8px; justify-content:flex-start; }
-
-  /* shrink logo */
-  .logo-wrap { width:48px; height:48px; border-radius:10px; }
-  .logo-img  { width:40px; height:40px; }
-
-  /* title slightly larger for clarity */
-  .title h1 { font-size:20px; }
-  .title .tagline { font-size:11px; }
-
-  /* nav becomes collapsible */
-  .menu-toggle { display:block; background:none; border:none; color:inherit; font-size:26px; padding:6px 10px; cursor:pointer; align-self:flex-end; margin-right:8px; }
-  .nav-links { display:none; flex-direction:column; gap:10px; padding:12px; margin:0 8px; border-radius:12px; background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border:1px solid rgba(255,255,255,0.04); }
-  .nav-links.active { display:flex; }
-}
-
-/* Extra small phones */
-@media (max-width:480px) {
-  .logo-wrap { width:40px; height:40px; }
-  .logo-img  { width:36px; height:36px; }
-  .title h1 { font-size:18px; }
-  .title .tagline { font-size:10px; }
-}
-
-/* ensure mask sizing still works nicely (your existing mask styles remain) */
-.mask { /* keep your existing responsive clamp sizing */ }
-
-/* small accessibility tweak for keyboard nav */
-.menu-toggle:focus { outline: 2px solid rgba(255,60,129,0.45); outline-offset:3px; border-radius:6px; }
-
+    footer{
+      margin-top:30px;
+      text-align:center;
+      font-size:13px;
+      color:rgba(255,255,255,0.6);
+    }
   </style>
-  <link rel="icon" type="image/png" href="images/logo1.png">
 
+  <link rel="icon" href="images/logo1.png" />
 </head>
+
 <body>
-  <div class="wrap">
-   <!-- Header (replace the existing brand block with this) -->
+<div class="wrap">
+
 <header>
-  <div class="brand">
-    <a class="brand-link" href="index.html" aria-label="Ceezee Creates home">
-      <span class="logo-wrap" aria-hidden="true">
-        <img
-          src="images/logo1.png"
-        alt="Ceezee Creates logo"
-          class="logo-img"
-          loading="eager"
-          />
-      </span>
+  <a href="index.html" class="brand-link">
+    <span class="logo-wrap">
+      <img src="images/logo1.png" alt="Ceezee Creates logo" class="logo-img">
+    </span>
+    <span class="title">
+      <h1>Ceezee Creates</h1>
+      <p class="tagline">Creative content · Tech · Motion</p>
+    </span>
+  </a>
 
-      <span class="title">
-        <h1>Ceezee Creates</h1>
-        <p class="tagline">Creative content · Tech · Motion</p>
-      </span>
-    </a>
-  </div>
-
-  <!-- Mobile menu toggle (if you add the nav toggle JS below) -->
-  <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
-
-  <!-- Your nav (keep/edit links as needed) -->
-  <nav class="nav-links" role="navigation">
-    <a href="index.html" aria-current="page">Home</a>
+  <nav>
+    <a href="index.html">Home</a>
     <a href="about.html">About</a>
     <a href="#">Projects</a>
-    <button class="cta" id="contactBtn" onclick="alert('Email: ceezeecreates@gmail.com')">Contact</button>
   </nav>
 </header>
 
+<main class="main">
 
-    <main class="main" role="main">
-      <!-- left column: content -->
-      <section>
-        <div class="panel">
-          <h2>About Ceezee</h2>
-          <p class="lead">I dream big. I build short videos, edits and designs that aim to be noticed. My goal: to grow my work and audience — to be as big, and even bigger, than creators I admire (yes — dreaming even bigger than MKBHD).</p>
+<section>
+  <div class="panel">
+    <h2>About Ceezee</h2>
+    <p class="lead">
+      I dream big. I build short videos, edits and designs that aim to be noticed.
+      My goal is to grow my work and audience — dreaming even bigger than MKBHD.
+    </p>
 
-          <div class="about-grid">
-            <div class="glass-card">
-              <h3>Vision</h3>
-              <p>Sharing ideas through cinematic shorts and tutorials. I want to build tools, templates and videos that help other creators level up — and do it with brilliant visuals and honest storytelling.</p>
-            </div>
+    <div class="about-grid">
 
-            <div class="glass-card">
-              <h3>Skills</h3>
-              <p>Video editing • Motion graphics • Thumbnail design • Web storytelling • Content strategy</p>
-              <div class="meta-list">
-                <span class="meta">YouTube • Shorts</span>
-                <span class="meta">Portfolio coming</span>
-              </div>
-            </div>
+      <div class="glass-card">
+        <h3>Vision</h3>
+        <p>
+          Sharing ideas through cinematic shorts and tutorials.
+          Building tools, templates and visuals that help creators level up.
+        </p>
+      </div>
 
-            <div class="glass-card">
-              <h3>Dream</h3>
-              <p>To reach audiences worldwide, iterate publicly, and make work that lasts. I study creators like MKBHD not to copy, but to learn how focus, craft and consistency scale creative careers.</p>
-            </div>
-          </div>
+      <div class="glass-card">
+        <h3>Skills</h3>
+        <p>
+          Video editing · Motion graphics · Thumbnail design ·
+          Web storytelling · Content strategy
+        </p>
+      </div>
 
-          <div style="margin-top:16px;">
-            <a class="btn" href="mailto:hello@ceezee.test" title="Email">Say hello</a>
-            <a class="btn" href="index.html" style="margin-left:8px;background:transparent;border:1px solid rgba(255,255,255,0.06);box-shadow:none;color:#fff">Back</a>
-          </div>
+      <div class="glass-card">
+        <h3>Dream</h3>
+        <p>
+          To reach audiences worldwide and build work that lasts,
+          guided by craft, focus and consistency.
+        </p>
+      </div>
 
-          <div class="meta" style="margin-top:12px">Tip: press <kbd>A</kbd> to return to About from the homepage (same keyboard shortcut as the homepage).</div>
-        </div>
-      </section>
+      <!-- ✅ PROJECT CARD -->
+      <div class="glass-card">
+        <h3>Selected Project</h3>
+        <p>
+          <strong>Maria Grette — Artist & Art Therapist</strong><br>
+          A concept-driven website translating artistic philosophy
+          into an immersive, image-led digital space.
+        </p>
 
-      <!-- right column: circular masked portrait centered -->
-      <aside class="mask-wrap" aria-hidden="false">
-        <div class="mask" role="img" aria-label="Ceezee portrait">
-          <img src="images/about.jpg" alt="Ceezee portrait">
-          <div class="ring" aria-hidden="true"></div>
-        </div>
-      </aside>
-    </main>
+        <a
+          href="https://mariagrette.com"
+          target="_blank"
+          rel="noopener"
+          class="project-link"
+        >
+          View project →
+        </a>
+      </div>
 
-    <footer>
-      © <strong>Ceezee Creates</strong> · Built with creativity, curiosity and persistence.
-    </footer>
+    </div>
+
+    <div style="margin-top:16px;">
+      <a class="btn" href="mailto:hello@ceezee.test">Say hello</a>
+      <a class="btn alt" href="index.html">Back</a>
+    </div>
   </div>
+</section>
 
-  <script>
-    // small keyboard support: press "h" to go home
-    document.addEventListener('keydown', (e)=>{
-      if(e.key.toLowerCase()==='h') window.location.href='index.html';
-    });
+<aside class="mask-wrap">
+  <div class="mask">
+    <img src="images/about.jpg" alt="Ceezee portrait">
+  </div>
+</aside>
 
-    // If you want to adjust the focal-point of the portrait,
-    // edit the CSS's object-position value for .mask img:
-    //   object-position: 45% 42%;  <-- example to nudge the focal point
-    //
-    // If the head appears too high/low/left/right inside the circle,
-    // change the percentages until you like the framing.
-  </script>
-  <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const btn = document.querySelector('.menu-toggle');
-    const nav = document.querySelector('.nav-links');
-    if (!btn || !nav) return;
-    btn.addEventListener('click', () => {
-      const isActive = nav.classList.toggle('active');
-      btn.setAttribute('aria-expanded', isActive ? 'true' : 'false');
-    });
-  });
-</script>
+</main>
 
+<footer>
+  © Ceezee Creates · Built with creativity, curiosity and persistence.
+</footer>
+
+</div>
 </body>
-
 </html>
-
-
-
-
