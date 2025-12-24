@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Maria Grette — Soul Portraits</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+/* ================= ROOT ================= */
+:root{
+  --bg:#faf6f2;
+  --text:#1f1f1f;
+  --soft:#6f6a66;
+  --line:#e7e1dc;
+  --glassA:rgba(255,255,255,.35);
+  --glassB:rgba(255,255,255,.12);
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:"Georgia","Times New Roman",serif;
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+}
+
+/* ================= HERO ================= */
+.art-hero{
+  height:100vh;
+  display:flex;
+  align-items:flex-start;
+  justify-content:center;
+  padding-top:120px;
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(180deg,#f7f3ef,#f1ebe6);
+}
+
+/* SIDE FADES */
+.art-hero::before,
+.art-hero::after{
+  content:"";
+  position:absolute;
+  top:0;
+  width:15vw;
+  max-width:300px;
+  height:100%;
+  z-index:20;
+  pointer-events:none;
+}
+.art-hero::before{
+  left:0;
+  background:linear-gradient(to right,var(--bg) 20%,transparent);
+}
+.art-hero::after{
+  right:0;
+  background:linear-gradient(to left,var(--bg) 20%,transparent);
+}
+
+/* ================= CAROUSEL ================= */
+.art-track{
+  display:flex;
+  gap:56px;
+  padding:0 100px;
+  position:relative;
+  will-change:transform;
+}
+
+.art-track img{
+  width:320px;
+  height:440px;
+  object-fit:cover;
+  border-radius:20px;
+  cursor:pointer;
+  position:relative;
+  z-index:10;
+
+  background:var(--glassA);
+  backdrop-filter:blur(8px) saturate(1.1);
+  box-shadow:
+    0 30px 60px rgba(0,0,0,.18),
+    inset 0 0 0 1px rgba(255,255,255,.45);
+
+  opacity:.55;
+  filter:saturate(.9) brightness(.9);
+
+  transition:
+    transform .5s cubic-bezier(.2,.8,.2,1),
+    filter .4s ease,
+    opacity .4s ease;
+}
+
+.art-track:hover img{opacity:.22}
+
+.art-track img:hover{
+  transform:scale(1.35) translateY(-16px);
+  opacity:1;
+  filter:saturate(1.05) brightness(1);
+  z-index:30;
+}
+
+/* ================= HERO TEXT ================= */
+.art-overlay-text{
+  position:absolute;
+  top:48px;
+  text-align:center;
+  z-index:40;
+  pointer-events:none;
+  transition:color .4s ease, -webkit-text-stroke .4s ease;
+}
+.art-overlay-text h1{
+  margin:0;
+  font-size:48px;
+  letter-spacing:.06em;
+  font-weight:normal;
+}
+.art-overlay-text p{
+  margin-top:10px;
+  font-size:14px;
+  letter-spacing:.3em;
+  text-transform:uppercase;
+}
+.hero-hover{
+  color:#f6f4ef;
+  -webkit-text-stroke:1px rgba(0,0,0,.35);
+}
+
+/* ================= SPEED CONTROL ================= */
+.speed-control{
+  position:absolute;
+  right:120px;
+  top:50%;
+  transform:translateY(-50%);
+  z-index:40;
+  padding:14px 18px;
+  border-radius:18px;
+  font-size:13px;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  color:#2a2a2a;
+  background:linear-gradient(135deg,var(--glassA),var(--glassB));
+  backdrop-filter:blur(14px) saturate(1.2);
+  box-shadow:
+    0 20px 50px rgba(0,0,0,.2),
+    inset 0 0 0 1px rgba(255,255,255,.6);
+  opacity:.75;
+}
+.speed-control:hover{opacity:1}
+
+/* ================= SECTIONS ================= */
+section{
+  max-width:1100px;
+  margin:90px auto;
+  padding:0 32px;
+  position:relative;
+}
+
+/* ================= STATEMENT ================= */
+.statement{
+  max-width:680px;
+  margin:auto;
+  margin-bottom:300px;
+  text-align:center;
+  font-size:18px;
+  color:var(--soft);
+  line-height:1.85;
+}
+.statement p{margin-bottom:12px}
+
+/* ================= TREE CONTAINER ================= */
+section.tree-container{
+  max-width:none;
+  margin:0;
+  padding:0;
+  width:100vw;
+}
+
+/* ================= TREE SPINE ================= */
+/* ================= TREE SPINE (ISOLATED) ================= */
+
+.tree-spine-wrapper{
+  position: sticky;
+  top:140px;
+  width:0;                 /* IMPORTANT: removes layout impact */
+  height:0;
+  margin-left:auto;
+  z-index:1;
+  pointer-events:none;
+}
+
+.tree-spine{
+  position:absolute;
+  right:0;
+  width:500px;             /* ← YOU CAN CHANGE THIS FREELY */
+  opacity:.55;
+}
+
+.tree-spine img{
+  width:100%;
+  display:block;
+  transform:translateX(6%);
+}
+
+/* ================= MEANING ================= */
+.meaning{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:80px;
+  align-items:center;
+  position:relative;
+  z-index:3;
+  max-width:1100px;
+  margin:0 auto;
+  padding:0 32px;
+}
+.meaning.reverse .meaning-text{order:-1}
+
+.glass-frame{
+  padding:22px;
+  border-radius:26px;
+  background:linear-gradient(135deg,rgba(255,255,255,.55),rgba(255,255,255,.15));
+  backdrop-filter:blur(18px) saturate(1.25);
+  box-shadow:
+    0 40px 90px rgba(0,0,0,.28),
+    inset 0 0 0 1px rgba(255,255,255,.65);
+}
+.glass-frame img{
+  width:100%;
+  border-radius:16px;
+  display:block;
+}
+
+.meaning-text{
+  font-size:17px;
+  color:var(--soft);
+  line-height:1.85;
+}
+
+/* ================= FOOTER ================= */
+footer{
+  margin-top:220px;
+  padding:90px 32px;
+  border-top:1px solid var(--line);
+  text-align:center;
+  font-size:15px;
+  color:var(--soft);
+}
+
+/* ================= MOBILE ================= */
+@media(max-width:900px){
+  .art-track{padding:0 40px;gap:28px}
+  .art-track img{width:220px;height:320px}
+  .art-overlay-text h1{font-size:32px}
+  .meaning{grid-template-columns:1fr}
+  .tree-spine{opacity:.25;width:220px}
+  .art-hero::before,.art-hero::after{width:80px}
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="art-hero">
+  <div class="art-track" id="track">
+    <img src="images/maria-artwork-1.jpeg">
+    <img src="images/maria-artwork-2.jpeg">
+    <img src="images/maria-artwork-3.jpeg">
+    <img src="images/maria-artwork-4.jpeg">
+    <img src="images/maria-artwork-5.jpeg">
+    <img src="images/maria-artwork-6.jpeg">
+    <img src="images/maria-artwork-7.jpeg">
+    <img src="images/maria-artwork-8.jpeg">
+    <img src="images/maria-artwork-9.jpeg">
+    <img src="images/maria-artwork-10.jpeg">
+    <img src="images/maria-artwork-11.jpeg">
+    <img src="images/maria-artwork-12.jpeg">
+    <img src="images/maria-artwork-13.jpeg">
+    <img src="images/maria-artwork-14.jpeg">
+    <img src="images/maria-artwork-15.jpeg">
+  </div>
+
+  <div class="art-overlay-text" id="heroText">
+    <h1>Maria Grette</h1>
+    <p>Soul Portraits</p>
+  </div>
+
+  <div class="speed-control" id="speedControl">Hover to speed up</div>
+</section>
+
+<!-- STATEMENT -->
+<section>
+  <div class="statement">
+    <p>Maria listens — deeply and without judgement — then paints what cannot be said.</p>
+    <p>Maria creates soul portraits by spending time with people physically or virtually — allowing conversation, emotion, silence, and energy to guide the work.</p>
+    <p>These paintings are not literal representations. They are emotional and spiritual impressions often resonating deeply with others who encounter them.</p>
+    <p>Every piece holds space for connection. You may recognise yourself in a portrait not made for you — or feel drawn to one that speaks to something within.</p>
+  </div>
+</section>
+
+<!-- MEANING + TREE -->
+<section class="tree-container">
+  <div class="tree-spine-wrapper">
+  <div class="tree-spine">
+    <img src="images/trunk.png" alt="">
+  </div>
+  </div>
+
+  <div class="meaning">
+    <div class="glass-frame">
+      <img src="images/The Trickster 21X28.jpeg">
+    </div>
+    <div class="meaning-text">
+      This work emerged from quiet presence. Layers of colour hold emotion that was never spoken — shaped by listening rather than observation.
+    </div>
+  </div>
+
+  <div class="meaning reverse">
+    <div class="glass-frame">
+      <img src="images/nr.1 ADAM  .jpeg">
+    </div>
+    <div class="meaning-text">
+      Created through intuitive response, this piece carries memory, spirit, and resonance. It invites recognition — not explanation.
+    </div>
+  </div>
+</section>
+
+<footer>
+  Maria Grette creates spiritual and intuitive soul portraits,
+  bridging art, presence, and human connection.
+  <br><br>
+  Contact for art purchase: info@mariagrette.com
+</footer>
+
+<script>
+/* ================= INFINITE CAROUSEL ================= */
+const track = document.getElementById("track");
+const heroText = document.getElementById("heroText");
+const speedControl = document.getElementById("speedControl");
+
+// duplicate images for seamless loop
+[...track.children].forEach(img=>{
+  track.appendChild(img.cloneNode(true));
+});
+
+let pos=0;
+let baseSpeed=0.4;
+let speed=baseSpeed;
+
+function animate(){
+  pos+=speed;
+  if(pos>=track.scrollWidth/2) pos=0;
+  track.style.transform=`translateX(${-pos}px)`;
+  requestAnimationFrame(animate);
+}
+animate();
+
+speedControl.addEventListener("mouseenter",()=>speed=1.5);
+speedControl.addEventListener("mouseleave",()=>speed=baseSpeed);
+
+document.querySelectorAll(".art-track img").forEach(img=>{
+  img.addEventListener("mouseenter",()=>heroText.classList.add("hero-hover"));
+  img.addEventListener("mouseleave",()=>heroText.classList.remove("hero-hover"));
+});
+</script>
+
+</body>
+</html>
